@@ -23,18 +23,26 @@ if(localStorage.getItem("signUpArray")!==null)
         document.getElementById('welcomeMessag').innerHTML= "welcom "  + localStorage.getItem("userName")
     }
 //for signup
-    document.getElementById('addsignUp').addEventListener('click',function(){
-        addsignUp()
-    })
+   
 function addsignUp() {
-    if(    signupName.value==""&& signupEmail.value==""&& signupPassword.value==""){
-        document.getElementById('exist').innerHTML=' <span class="text-danger m-3">All inputs is required</span>'                 
-        }
-    var signUp = {
+   if( isEmpty() == false){
+        document.getElementById('exist').innerHTML=' <span class="text-danger m-3">All inputs is required</span>'  
+        return false;               
+        }else{
+          var signUp = {
         name: signupName.value,
         email: signupEmail.value,
         password: signupPassword.value,
     };
+        }
+    
+    if (signUpArray.length == 0) {
+        signUpArray.push(signUp);
+        localStorage.setItem("signUpArray",JSON.stringify(signUpArray));
+        document.getElementById('exist').innerHTML = '<span class="text-success m-3">Success</span>'
+        return true
+    }
+ 
     if(checkEmail() == true){
         document.getElementById('exist').innerHTML = '<span class="text-danger m-3">email already exists</span>'
                }
@@ -52,6 +60,14 @@ function addsignUp() {
   
   
 }
+   function isEmpty(){
+                if(    signupName.value==""|| signupEmail.value==""||signupPassword.value==""){
+                    return false;
+            }
+            else{
+                return true;
+            }
+            }
 // for clear values inputs
 function clearInput(){
     signupName.value="";
