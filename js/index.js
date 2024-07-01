@@ -33,16 +33,9 @@ function addsignUp() {
         name: signupName.value,
         email: signupEmail.value,
         password: signupPassword.value,
-    };
-        }
-    
-    if (signUpArray.length == 0) {
-        signUpArray.push(signUp);
-        localStorage.setItem("signUpArray",JSON.stringify(signUpArray));
-        document.getElementById('exist').innerHTML = '<span class="text-success m-3">Success</span>'
-        return true
     }
- 
+        }
+     
     if(checkEmail() == true){
         document.getElementById('exist').innerHTML = '<span class="text-danger m-3">email already exists</span>'
                }
@@ -53,21 +46,9 @@ function addsignUp() {
                 console.log(signUpArray);
         document.getElementById('exist').innerHTML = '<span class="text-success m-3">Success</span>'
                 
-               }
-   
-
- 
-  
-  
+               } 
 }
-   function isEmpty(){
-                if(    signupName.value==""|| signupEmail.value==""||signupPassword.value==""){
-                    return false;
-            }
-            else{
-                return true;
-            }
-            }
+
 // for clear values inputs
 function clearInput(){
     signupName.value="";
@@ -115,6 +96,17 @@ function clearInput(){
     buttonAria.setAttribute('aria-expanded','true');
     elemnt.classList.toggle('show')
 }
+
+
+
+   function isEmpty(){
+                if(    signupName.value==""|| signupEmail.value==""||signupPassword.value==""){
+                    return false;
+            }
+            else{
+                return true;
+            }
+            }
 
 
 
